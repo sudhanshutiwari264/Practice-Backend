@@ -17,7 +17,7 @@ app.get('/', function(req, res){
 });
 
 app.post('/create', function(req, res){
-    fs.writeFile(`./files/${req.body.title.split(" ").join("")}.txt`, req.body.details,function(err){
+    fs.writeFile(`./files/${req.body.title}`, req.body.details,function(err){
         res.redirect("/");
     });
 });
@@ -26,6 +26,17 @@ app.get('/files/:filename', function(req, res){
     fs.readFile(`./files/${req.params.filename}`,"utf-8",function(err, filedata){
         res.render(`show`,{filename:req.params.filename, filedata: filedata});
     });
+});
+
+app.post('/rename', function(req, res){
+    console.log(req.body)
+    fs.rename(`./files/${req.body.previous}`, `./files/${req.body.new}.txt`,function(err){
+        res.redirect("/");
+    });
+});
+
+app.get('/edit/:filename', function(req, res){
+    res.render('edit',{filename:req.params.filename})
 });
 
 app.listen(3000, function(err){

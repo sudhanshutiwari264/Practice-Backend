@@ -1,0 +1,1 @@
+Compile and write a technical report on the performance of the company's IT infrastructure over the past year. The report should include data analysis, identified issues, implemented solutions, and future recommendations. Ensure that the report is clear, concise, and accessible to both technical and non-technical stakeholders.
